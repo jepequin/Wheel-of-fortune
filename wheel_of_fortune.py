@@ -1,9 +1,6 @@
 import random
-
-def lands_in():
-	wedge_types = ["cash","bankrupt","loseturn"]
-	wedge_type = random.sample(wedge_types,1)
-	return wedge_type 
+import json
+import sys
 
 def input_players():
 	stop_input = False
@@ -18,11 +15,47 @@ def input_players():
 				stop_input = True
 		except ValueError:
 			print('"{}" is not an integer'.format(num_human))
-		players = []
+	players = []
 	for i in range(num_human):
 		player = input("Enter name of player {}: ".format(i+1))
 		players.append(player)
 	random.shuffle(players)
 	return players
 
-players = input_players()
+def load_data():
+	with open('phrases.json','r') as json_file:
+		json_string = json_file.read()
+		phrases = json.loads(json_string)
+	with open('wheel.json','r') as json_file:
+		json_string = json_file.read()
+		wheel = json.loads(json_string)	
+	return phrases, wheel
+
+def select_wedge(lst):
+	wedge = random.sample(lst,1)
+	return wedge 
+
+def select_phrase(dic):
+	category = random.sample(list(dic),1)[0]
+	phrase = random.sample(dic[category],1)[0]
+	#print('Category chosen: {}'.format(category))
+	#print('Phrase chosen: {}'.format(phrase))
+	dic[category].remove(phrase)
+	#print('Removed phrase from category: {}'.format(phrase not in dic[category]))
+	if len(dic[category]) == 0:
+		del dic[category]
+		#print('Deleted category "{}"'.format(category))
+		#print('Remaining categories: {}'.format(len(dic)))
+	if len(dic) == 0:
+		sys.exit("There are no more categories available.")
+	return category, phrase
+
+class Phrase():
+	vowels = ["a", "e", "i", "o", "u"]
+	def __init__(self,phrase):
+		self.phrase = phrase.lower()
+		self.blanked = "".join(["_" if char.isalnum() else char for char in self.phrase])
+		self.guessed = ""
+		self.has_vowels = any(char in self.vowels for char in self.phrase)
+
+
