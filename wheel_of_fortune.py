@@ -51,11 +51,23 @@ def select_phrase(dic):
 	return category, phrase
 
 class Phrase():
-	vowels = ["a", "e", "i", "o", "u"]
+	vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 	def __init__(self,phrase):
-		self.phrase = phrase.lower()
+		if not phrase.isascii():
+			raise ValueError("Phrase contains non-ascii characters")
+		self.phrase = phrase
 		self.blanked = "".join(["_" if char.isalnum() else char for char in self.phrase])
 		self.guessed = ""
 		self.has_vowels = any(char in self.vowels for char in self.phrase)
+
+def guess_letter(phrase,letter):
+	letter = letter.lower()
+	if letter not in phrase.phrase.lower():
+		return False
+	else:
+		phrase.guessed = phrase.guessed + letter
+		phrase.blanked = "".join(["_" if char.lower() not in phrase.guessed and char.isalnum() else char for char in phrase.phrase])
+		phrase.has_vowels = any(char in phrase.vowels for char in phrase.phrase if char.lower() not in phrase.guessed and char.isalnum())
+
 
 
