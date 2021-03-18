@@ -17,7 +17,8 @@ def input_players():
 			print('"{}" is not an integer'.format(num_human))
 	players = []
 	for i in range(num_human):
-		player = input("Enter name of player {}: ".format(i+1))
+		name = input("Enter name of player {}: ".format(i+1))
+		player = Player(name)
 		players.append(player)
 	random.shuffle(players)
 	return players
@@ -31,11 +32,13 @@ def load_data():
 		wheel = json.loads(json_string)	
 	return phrases, wheel
 
-def select_wedge(lst):
+def spin_wheel(lst):
 	wedge = random.sample(lst,1)
 	return wedge 
 
 def select_phrase(dic):
+	if len(dic) == 0:
+		sys.exit("There are no more categories available.")
 	category = random.sample(list(dic),1)[0]
 	phrase = random.sample(dic[category],1)[0]
 	#print('Category chosen: {}'.format(category))
@@ -46,28 +49,71 @@ def select_phrase(dic):
 		del dic[category]
 		#print('Deleted category "{}"'.format(category))
 		#print('Remaining categories: {}'.format(len(dic)))
-	if len(dic) == 0:
-		sys.exit("There are no more categories available.")
-	return category, phrase
+	phrase = Phrase(category, phrase)	
+	return phrase
 
 class Phrase():
 	vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
-	def __init__(self,phrase):
+	def __init__(self,category,phrase):
 		if not phrase.isascii():
 			raise ValueError("Phrase contains non-ascii characters")
+		self.category = category
 		self.phrase = phrase
 		self.blanked = "".join(["_" if char.isalnum() else char for char in self.phrase])
 		self.guessed = ""
 		self.has_vowels = any(char in self.vowels for char in self.phrase)
 
-def guess_letter(phrase,letter):
-	letter = letter.lower()
-	if letter not in phrase.phrase.lower():
-		return False
-	else:
-		phrase.guessed = phrase.guessed + letter
-		phrase.blanked = "".join(["_" if char.lower() not in phrase.guessed and char.isalnum() else char for char in phrase.phrase])
-		phrase.has_vowels = any(char in phrase.vowels for char in phrase.phrase if char.lower() not in phrase.guessed and char.isalnum())
+	def guess_letter(self,letter):
+		letter = letter.lower()
+		if letter not in self.phrase.lower():
+			return False
+		else:
+			self.guessed = self.guessed + letter
+			self.blanked = "".join(["_" if char.lower() not in self.guessed and char.isalnum() else char for char in self.phrase])
+			self.has_vowels = any(char in self.vowels for char in self.phrase if char.lower() not in self.guessed and char.isalnum())
+
+class Player():
+	def __init__(self,name):
+		self.name = name
+		self.money = 0
+		self.prize = []
+	
+	def bankrupt(self):
+		self.money = 0
+
+	def buy_vowel(self):
+		self.money = self.money - 250
+
+	def guessed_letter(self,amount,nb_letters,prize=False):
+		self.money = self.money + amount*nb_letters
+		if prize:
+			#print("Inside conditional")
+			#print("Prize to be added: {}".format(prize))
+			self.prize.append(prize)
+			#print("Updated prize list: {}".format(self.prize))
+
+def game_round(phr,players):
+	print("Phrase to guess: {}".format(phr.phrase))
+	print("Game round finished")
+
+def game(phrases,wheel):
+	players = input_players()
+	stop_game = False
+	while not stop_game:
+		phrase = select_phrase(phrases)
+		game_round(phrase,players)
+		stop_input = False
+		while not stop_input:
+			answer = input("Continue playing (y/n): ")
+			if answer.lower() in ['y','n']:
+				stop_input = True
+			else:
+				print("Please enter 'y' to continue, and 'n' to stop the game.")
+		if answer.lower() == 'n':
+			stop_game = True
+			print("Good bye!")
 
 
 
+phrases, wheel = load_data()
+game(phrases, wheel)
