@@ -312,5 +312,5 @@ LETTER_ORDERS = CONSONANT_ORDERS + VOWEL_ORDERS
 PHRASES, WHEEL = load_data()
 
 # Play game
-#game()
+game()
 
