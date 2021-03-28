@@ -43,3 +43,7 @@ The program asks to input the number of players and their names. Each player has
 	- If the wheel lands on “bankrupt”, the player loses their turn and loses their money but they keep all of the prizes they have won so far.
 
 The game continues until the entire phrase is revealed (or one player guesses the complete phrase). At this point the player is asked if he/she wants to continue playing (with a new category and phrase).
+
+## Author
+
+Jesua Epequin. Contact me at jesua.epequin@gmail.com
