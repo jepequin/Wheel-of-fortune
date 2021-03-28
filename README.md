@@ -2,19 +2,19 @@
 
 This game is the project of the fourth course in Python 3 Programming Specialization (offered by University of Michigan via Coursera). The goal is to practice with the notion of classes introduced in the course. We also create tests for several functions inside our code.
 
-##Description
+## Description
 
 The program asks to input the number of players and their names. Each player has some amount of money ($0 at the start of the game), a set of prizes (none at the start of the game)
 
-####The goal of the game is to guess a phrase within a category. For example:
+#### The goal of the game is to guess a phrase within a category. For example:
 Category: Artist & Song
 Phrase: Whitney Houston's I Will Always Love You
 
-####Players see the category and an obscured version of the phrase where every alphabetic character in the phrase starts out as hidden (using underscores: _):
+#### Players see the category and an obscured version of the phrase where every alphabetic character in the phrase starts out as hidden (using underscores: _):
 Category: Artist & Song
 Phrase: _______ ______' _ ____ ______ ____ ___
 
-####During their turn, every player spins the wheel to determine a prize amount and:
+#### During their turn, every player spins the wheel to determine a prize amount and:
 	- If the wheel lands on a cash square, players may do one of three actions:
 
 		- Guess any letter that hasn’t been guessed by typing a letter (a-z)
