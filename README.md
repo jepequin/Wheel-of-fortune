@@ -33,7 +33,7 @@ The program initially asks to input the number of players and their names. Each 
 
 	- Guess the complete phrase by typing a phrase (anything over one character that isn’t ‘pass’).
 
-		- If they are correct, the player is asked if he/she want to continue playing (with a new category and phrase).
+		- If it is correct, the player wins that round and is asked if she wants to continue playing (with a new category and phrase).
 		
 		- If they are incorrect, it is the next player’s turn. 
 		
@@ -43,7 +43,7 @@ The program initially asks to input the number of players and their names. Each 
 
 - If the wheel lands on “bankrupt”, the player loses their turn and loses their money but they keep all of the prizes they have won so far.
 
-The game continues until the entire phrase is revealed (or one player guesses the complete phrase). At this point the player is asked if he/she wants to continue playing (with a new category and phrase).
+The game continues until the entire phrase is revealed (or one player guesses the complete phrase). At this point the player is asked if she wants to continue playing (with a new category and phrase).
 
 ## Author
 
