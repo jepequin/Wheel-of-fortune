@@ -4,11 +4,11 @@ This game is the project of the fourth course in Python 3 Programming Specializa
 
 ## Description
 
-The program initially asks to input the number of players and their names. Each player has some amount of money ($0 at the start of the game), a set of prizes (none at the start of the game)
+The program initially asks to input the number of players and their names. Each player has some amount of money ($0 at the start of the game), a set of prizes (none at the start of the game).
 
 #### The goal of the game is to guess a phrase within a category. For example:
-- Category: Artist & Song
-- Phrase: Whitney Houston's I Will Always Love You
+- Category: Artist & Song.
+- Phrase: Whitney Houston's I Will Always Love You.
 
 #### Players see the category and an obscured version of the phrase where every alphabetic character in the phrase starts out as hidden (using underscores: _):
 - Category: Artist & Song
@@ -19,27 +19,27 @@ The program initially asks to input the number of players and their names. Each 
 
 	- Guess any letter that hasn’t been guessed by typing a letter (a-z)
 
-		- Vowels (a, e, i, o, u) cost $250 to guess and can’t be guessed if the player doesn’t have enough money or there are no more remaining vowels to be guessed. All consonants are “free” to guess
+		- Vowels (a, e, i, o, u) cost $250 to guess and can’t be guessed if the player doesn’t have enough money or there are no more remaining vowels to be guessed. All consonants are “free” to guess.
 
 		- The player can guess any letter that hasn’t been guessed (these are shown to the player) and gets that cash amount for every time that letter appears in the phrase. 
 
-		- If there is a prize, the user also gets that prize (in addition to any prizes they already had)
+		- If there is a prize, the user also gets that prize (in addition to any prizes they already had).
 
-		- If the letter does appear in the phrase, the player spins the wheel again and repeats the process. Otherwise, it’s the next player’s turn
+		- If the letter does appear in the phrase, the player spins the wheel again and repeats the process. Otherwise, it’s the next player’s turn.
 
-		- Example: The user lands on $500 and guesses ‘W’
+		- Example: The user lands on $500 and guesses ‘W’.
 
-			- There are three W’s in the phrase, so the player wins $1500
+			- There are three W’s in the phrase, so the player wins $1500.
 
-	- Guess the complete phrase by typing a phrase (anything over one character that isn’t ‘pass’)
+	- Guess the complete phrase by typing a phrase (anything over one character that isn’t ‘pass’).
 
-		- If they are correct, the player is asked if he/she want to continue playing (with a new category and phrase)
+		- If they are correct, the player is asked if he/she want to continue playing (with a new category and phrase).
 		
-		- If they are incorrect, it is the next player’s turn 
+		- If they are incorrect, it is the next player’s turn. 
 		
-	- Pass their turn by entering 'pass'
+	- Pass their turn by entering 'pass'.
 
-- If the wheel lands on “lose a turn”, the player loses their turn and the game moves on to the next player
+- If the wheel lands on “lose a turn”, the player loses their turn and the game moves on to the next player.
 
 - If the wheel lands on “bankrupt”, the player loses their turn and loses their money but they keep all of the prizes they have won so far.
 
@@ -47,4 +47,4 @@ The game continues until the entire phrase is revealed (or one player guesses th
 
 ## Author
 
-Jesua Epequin. Contact me at jesua.epequin@gmail.com
+Jesua Epequin. Contact me at jesua.epequin@gmail.com.
