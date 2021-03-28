@@ -17,7 +17,7 @@ The program initially asks to input the number of players and their names. Each 
 #### During their turn, every player spins the wheel to determine a prize amount and:
 - If the wheel lands on a cash square, players may do one of three actions:
 
- - Guess any letter that hasn’t been guessed by typing a letter (a-z)
+	- Guess any letter that hasn’t been guessed by typing a letter (a-z)
 
   - Vowels (a, e, i, o, u) cost $250 to guess and can’t be guessed if the player doesn’t have enough money or there are no more remaining vowels to be guessed. All consonants are “free” to guess
 
